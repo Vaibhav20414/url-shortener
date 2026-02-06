@@ -1,0 +1,21 @@
+HTTP Layer        → Go handlers
+Business Logic    → Generate code, validate input
+Persistence Layer → PostgreSQL
+Cache Layer       → Redis
+
+Why the collision of the encrypted URL should be handled in the PostgreSQL?
+
+Go code can run in multiple goroutines.
+
+Business logic may try to avoid collisions,
+but the database must be the final authority.
+
+Business logic is where we have the Go logic, where the backend logic exists
+but for the final call for collision must be the database system 
+
+
+That is why when specifing the schema, we write-
+
+UNIQUE (short_code) 
+
+
